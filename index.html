@@ -4,13 +4,19 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>ระบบวิเคราะห์ดินและแนะนำการปลูกพืช</title>
+  
+  <!-- ดึง Google Fonts: Prompt และ Kanit -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Prompt:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
   <header>
     <h1>🌱 ระบบวิเคราะห์ดินและแนะนำการปลูกพืช</h1>
-    <p>ช่วยวิเคราะห์ ชนิดดิน พืช และพื้นที่ เพื่อการเกษตรที่แม่นยำ</p>
+    <p>ช่วยวิเคราะห์ ชนิดดิน พืช สภาพอากาศ และดัชนีชี้วัด เพื่อการเกษตรที่แม่นยำ</p>
   </header>
 
   <!-- แท็บเมนูสลับฟีเจอร์ -->
@@ -24,8 +30,8 @@
 
     <!-- ================= ฟีเจอร์ที่ 1 ================= -->
     <section id="feature1" class="tab-content active">
-      <h2>🔍 ฟีเจอร์ที่ 1: วิเคราะห์ตามชนิดดิน</h2>
-      <p>เลือกชนิดดินเพื่อดูว่าเหมาะกับพืชประเภทไหน พร้อมแนะนำแสงและน้ำ</p>
+      <h2>🔍 ฟีเจอร์ที่ 1: วิเคราะห์ตามชนิดดินและดัชนีชี้วัด</h2>
+      <p>เลือกชนิดดินเพื่อดูคุณสมบัติ ค่า pH สภาพอากาศที่เหมาะ และ Top 5 พืชที่ควรปลูก</p>
       
       <div class="form-group">
         <label for="f1-soil">เลือกชนิดดิน:</label>
@@ -38,14 +44,14 @@
         </select>
       </div>
 
-      <button class="btn" onclick="analyzeFeature1()">วิเคราะห์ดิน</button>
+      <button class="btn" onclick="analyzeFeature1()">วิเคราะห์ดินเจาะลึก</button>
       <div id="f1-result" class="result-box hidden"></div>
     </section>
 
     <!-- ================= ฟีเจอร์ที่ 2 ================= -->
     <section id="feature2" class="tab-content">
       <h2>📊 ฟีเจอร์ที่ 2: ประเมินโอกาสรอดของการปลูกพืช (%)</h2>
-      <p>เลือกดิน พืช และจังหวัด เพื่อให้ AI วิเคราะห์โอกาสรอดและวิธีดูแล</p>
+      <p>เลือกดิน พืช และจังหวัด เพื่อให้ AI วิเคราะห์โอกาสรอด สภาพอากาศ และดัชนีที่เกี่ยวข้อง</p>
 
       <div class="form-group">
         <label for="f2-plant">พิมพ์ชื่อพืชที่ต้องการปลูก (ภาษาไทยหรืออังกฤษ):</label>
@@ -159,7 +165,7 @@
     <!-- ================= ฟีเจอร์ที่ 3 ================= -->
     <section id="feature3" class="tab-content">
       <h2>💡 ฟีเจอร์ที่ 3: แนะนำพืชที่เหมาะกับพื้นที่และดิน</h2>
-      <p>ระบุชนิดดินและจังหวัดของคุณ เว็บจะแนะนำพืชที่เหมาะสมที่สุดให้</p>
+      <p>ระบุชนิดดินและจังหวัดของคุณ เว็บจะแนะนำพืชที่เหมาะสมที่สุดอิงจากสภาพอากาศให้</p>
 
       <div class="form-group">
         <label for="f3-soil">เลือกชนิดดินของคุณ:</label>
@@ -270,3 +276,4 @@
   <script src="script.js"></script>
 </body>
 </html>
+
