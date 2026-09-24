@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>ระบบแนะนำพืชตามชนิดดินและสภาพอากาศรายจังหวัด</title>
+  <title>ระบบแนะนำการปลูกพืชการเกษตรแม่นยำ (77 จังหวัด)</title>
   <link rel="stylesheet" href="style.css">
   <link href="https://fonts.googleapis.com/css2?family=Sarabun:wght@300;400;600;700&display=swap" rel="stylesheet">
 </head>
@@ -27,7 +27,7 @@
           <select id="soil-select">
             <option value="loam">ดินร่วน (Loam Soil)</option>
             <option value="clay">ดินเหนียว (Clay Soil)</option>
-            <option value="sandy" selected>ดินทราย (Sandy Soil)</option>
+            <option value="sandy">ดินทราย (Sandy Soil)</option>
             <option value="sandy-loam">ดินร่วนปนทราย (Sandy Loam)</option>
             <option value="clay-loam">ดินร่วนปนเหนียว (Clay Loam)</option>
             <option value="peat">ดินอินทรีย์ / ดินพรุ (Peat Soil)</option>
@@ -37,60 +37,146 @@
         <div class="form-group">
           <label for="province-select">📍 เลือกจังหวัด (77 จังหวัด):</label>
           <select id="province-select">
-            <option value="กำแพงเพชร" selected>กำแพงเพชร</option>
-            <option value="กรุงเทพมหานคร">กรุงเทพมหานคร</option>
-            <option value="เชียงใหม่">เชียงใหม่</option>
-            <option value="เชียงราย">เชียงราย</option>
-            <option value="ขอนแก่น">ขอนแก่น</option>
-            <option value="นครราชสีมา">นครราชสีมา</option>
-            <option value="จันทบุรี">จันทบุรี</option>
-            <option value="สุราษฎร์ธานี">สุราษฎร์ธานี</option>
-            <option value="สงขลา">สงขลา</option>
+            <!-- รายชื่อ 77 จังหวัด -->
+            <optgroup label="ภาคเหนือ">
+              <option value="เชียงใหม่">เชียงใหม่</option>
+              <option value="เชียงราย">เชียงราย</option>
+              <option value="ลำปาง">ลำปาง</option>
+              <option value="ลำพูน">ลำพูน</option>
+              <option value="แม่ฮ่องสอน">แม่ฮ่องสอน</option>
+              <option value="น่าน">น่าน</option>
+              <option value="พะเยา">พะเยา</option>
+              <option value="แพร่">แพร่</option>
+              <option value="อุตรดิตถ์">อุตรดิตถ์</option>
+            </optgroup>
+            <optgroup label="ภาคกลาง">
+              <option value="กรุงเทพมหานคร" selected>กรุงเทพมหานคร</option>
+              <option value="กำแพงเพชร">กำแพงเพชร</option>
+              <option value="ชัยนาท">ชัยนาท</option>
+              <option value="นครนายก">นครนายก</option>
+              <option value="นครปฐม">นครปฐม</option>
+              <option value="นครสวรรค์">นครสวรรค์</option>
+              <option value="นนทบุรี">นนทบุรี</option>
+              <option value="ปทุมธานี">ปทุมธานี</option>
+              <option value="พระนครศรีอยุธยา">พระนครศรีอยุธยา</option>
+              <option value="พิจิตร">พิจิตร</option>
+              <option value="พิษณุโลก">พิษณุโลก</option>
+              <option value="เพชรบูรณ์">เพชรบูรณ์</option>
+              <option value="ลพบุรี">ลพบุรี</option>
+              <option value="สมุทรปราการ">สมุทรปราการ</option>
+              <option value="สมุทรสงคราม">สมุทรสงคราม</option>
+              <option value="สมุทรสาคร">สมุทรสาคร</option>
+              <option value="สระบุรี">สระบุรี</option>
+              <option value="สิงห์บุรี">สิงห์บุรี</option>
+              <option value="สุโขทัย">สุโขทัย</option>
+              <option value="สุพรรณบุรี">สุพรรณบุรี</option>
+              <option value="อ่างทอง">อ่างทอง</option>
+              <option value="อุทัยธานี">อุทัยธานี</option>
+            </optgroup>
+            <optgroup label="ภาคตะวันออกเฉียงเหนือ (อีสาน)">
+              <option value="กาฬสินธุ์">กาฬสินธุ์</option>
+              <option value="ขอนแก่น">ขอนแก่น</option>
+              <option value="ชัยภูมิ">ชัยภูมิ</option>
+              <option value="นครพนม">นครพนม</option>
+              <option value="นครราชสีมา">นครราชสีมา</option>
+              <option value="บึงกาฬ">บึงกาฬ</option>
+              <option value="บุรีรัมย์">บุรีรัมย์</option>
+              <option value="มหาสารคาม">มหาสารคาม</option>
+              <option value="มุกดาหาร">มุกดาหาร</option>
+              <option value="ยโสธร">ยโสธร</option>
+              <option value="ร้อยเอ็ด">ร้อยเอ็ด</option>
+              <option value="เลย">เลย</option>
+              <option value="ศรีสะเกษ">ศรีสะเกษ</option>
+              <option value="สกลนคร">สกลนคร</option>
+              <option value="สุรินทร์">สุรินทร์</option>
+              <option value="หนองคาย">หนองคาย</option>
+              <option value="หนองบัวลำภู">หนองบัวลำภู</option>
+              <option value="อำนาจเจริญ">อำนาจเจริญ</option>
+              <option value="อุดรธานี">อุดรธานี</option>
+              <option value="อุบลราชธานี">อุบลราชธานี</option>
+            </optgroup>
+            <optgroup label="ภาคตะวันออก">
+              <option value="จันทบุรี">จันทบุรี</option>
+              <option value="ฉะเชิงเทรา">ฉะเชิงเทรา</option>
+              <option value="ชลบุรี">ชลบุรี</option>
+              <option value="ตราด">ตราด</option>
+              <option value="ปราจีนบุรี">ปราจีนบุรี</option>
+              <option value="ระยอง">ระยอง</option>
+              <option value="สระแก้ว">สระแก้ว</option>
+            </optgroup>
+            <optgroup label="ภาคตะวันตก">
+              <option value="กาญจนบุรี">กาญจนบุรี</option>
+              <option value="ตาก">ตาก</option>
+              <option value="ประจวบคีรีขันธ์">ประจวบคีรีขันธ์</option>
+              <option value="เพชรบุรี">เพชรบุรี</option>
+              <option value="ราชบุรี">ราชบุรี</option>
+            </optgroup>
+            <optgroup label="ภาคใต้">
+              <option value="กระบี่">กระบี่</option>
+              <option value="ชุมพร">ชุมพร</option>
+              <option value="ตรัง">ตรัง</option>
+              <option value="นครศรีธรรมราช">นครศรีธรรมราช</option>
+              <option value="นราธิวาส">นราธิวาส</option>
+              <option value="ปัตตานี">ปัตตานี</option>
+              <option value="พังงา">พังงา</option>
+              <option value="พัทลุง">พัทลุง</option>
+              <option value="ภูเก็ต">ภูเก็ต</option>
+              <option value="ยะลา">ยะลา</option>
+              <option value="ระนอง">ระนอง</option>
+              <option value="สงขลา">สงขลา</option>
+              <option value="สตูล">สตูล</option>
+              <option value="สุราษฎร์ธานี">สุราษฎร์ธานี</option>
+            </optgroup>
           </select>
         </div>
       </div>
 
-      <button id="btn-process" class="btn-primary" type="button">วิเคราะห์และจัดอันดับพืช</button>
+      <button id="btn-process" class="btn-primary" onclick="generateRecommendation()">วิเคราะห์และจัดอันดับพืช</button>
     </section>
 
+    <!-- กล่องแสดงผลลัพธ์ -->
     <section id="result-section" class="result-container hidden">
       <div class="info-card">
         <h2 id="result-title">ตารางจัดอันดับพืชที่เหมาะสม</h2>
-        <div id="province-detail" class="climate-badge"></div>
+        <div id="climate-info" class="climate-badge"></div>
       </div>
 
+      <!-- ตารางแสดงผล TOP 20 -->
       <div class="table-responsive">
         <table class="crop-table">
           <thead>
             <tr>
               <th style="width: 8%;">อันดับ</th>
-              <th style="width: 16%;">ชื่อพืช</th>
-              <th style="width: 22%;">เหตุผลความเหมาะสม</th>
+              <th style="width: 15%;">ชื่อพืช</th>
+              <th style="width: 20%;">เหตุผลความเหมาะสม</th>
               <th style="width: 12%;">ปริมาณน้ำ</th>
               <th style="width: 12%;">แสงแดด</th>
-              <th style="width: 12%;">ฤดูกาลปลูก</th>
-              <th style="width: 18%;">คำแนะนำการปลูก</th>
+              <th style="width: 13%;">ฤดูกาลปลูก</th>
+              <th style="width: 20%;">คำแนะนำการปลูก</th>
             </tr>
           </thead>
           <tbody id="crop-table-body">
-            </tbody>
+            <!-- ข้อมูลจะถูกสร้างผ่าน JavaScript -->
+          </tbody>
         </table>
       </div>
 
+      <!-- แหล่งอ้างอิงข้อมูล -->
       <div class="reference-card">
-        <h3>📚 แหล่งอ้างอิงข้อมูลวิชาการเกษตร</h3>
+        <h3>📚 แหล่งอ้างอิงข้อมูลที่เชื่อถือได้</h3>
         <ul>
-          <li>กรมพัฒนาที่ดิน (LDD) - <a href="https://www.ldd.go.th" target="_blank">ldd.go.th</a></li>
-          <li>กรมวิชาการเกษตร (DOA) - <a href="https://www.doa.go.th" target="_blank">doa.go.th</a></li>
-          <li>สำนักงานเศรษฐกิจการเกษตร (OAE) - <a href="https://www.oae.go.th" target="_blank">oae.go.th</a></li>
-          <li>กรมอุตุนิยมวิทยา (TMD) - <a href="https://www.tmd.go.th" target="_blank">tmd.go.th</a></li>
+          <li>กรมพัฒนาที่ดิน กระทรวงเกษตรและสหกรณ์ (Land Development Department) - <a href="https://www.ldd.go.th" target="_blank">ldd.go.th</a></li>
+          <li>กรมวิชาการเกษตร (Department of Agriculture) - <a href="https://www.doa.go.th" target="_blank">doa.go.th</a></li>
+          <li>กรมอุตุนิยมวิทยา (Thai Meteorological Department) - <a href="https://www.tmd.go.th" target="_blank">tmd.go.th</a></li>
+          <li>ศูนย์สารสนเทศการเกษตร สำนักงานเศรษฐกิจการเกษตร - <a href="https://www.oae.go.th" target="_blank">oae.go.th</a></li>
+          <li>คลังความรู้การเกษตร มหาวิทยาลัยเกษตรศาสตร์ - <a href="https://www.ku.ac.th" target="_blank">ku.ac.th</a></li>
         </ul>
       </div>
     </section>
   </main>
 
   <footer>
-    <p>© ระบบวิเคราะห์ข้อมูลการเกษตร (Client-Side Dynamic Data Analysis)</p>
+    <p>© ระบบวิเคราะห์ข้อมูลการเกษตรแบบประมวลผลภายในอุปกรณ์ (No-API Client Side Processing)</p>
   </footer>
 
   <script src="script.js"></script>
