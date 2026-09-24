@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ระบบวิเคราะห์ดินและแนะนำการปลูกพืช</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <header>
+    <h1>🌱 ระบบวิเคราะห์ดินและแนะนำการปลูกพืช</h1>
+    <p>ช่วยวิเคราะห์ ชนิดดิน พืช และพื้นที่ เพื่อการเกษตรที่แม่นยำ</p>
+  </header>
+
+  <!-- แท็บเมนูสลับฟีเจอร์ -->
+  <nav class="tabs">
+    <button class="tab-btn active" onclick="switchTab('feature1')">1. วิเคราะห์จากดิน</button>
+    <button class="tab-btn" onclick="switchTab('feature2')">2. เช็กโอกาสรอด (%)</button>
+    <button class="tab-btn" onclick="switchTab('feature3')">3. แนะนำพืชตามพื้นที่</button>
+  </nav>
+
+  <main class="container">
+
+    <!-- ================= ฟีเจอร์ที่ 1 ================= -->
+    <section id="feature1" class="tab-content active">
+      <h2>🔍 ฟีเจอร์ที่ 1: วิเคราะห์ตามชนิดดิน</h2>
+      <p>เลือกชนิดดินเพื่อดูว่าเหมาะกับพืชประเภทไหน พร้อมแนะนำแสงและน้ำ</p>
+      
+      <div class="form-group">
+        <label for="f1-soil">เลือกชนิดดิน:</label>
+        <select id="f1-soil">
+          <option value="ดินร่วน">ดินร่วน (Loam Soil)</option>
+          <option value="ดินเหนียว">ดินเหนียว (Clay Soil)</option>
+          <option value="ดินทราย">ดินทราย (Sandy Soil)</option>
+          <option value="ดินร่วนปนทราย">ดินร่วนปนทราย (Sandy Loam)</option>
+          <option value="ดินอินทรีย์/ดินพรุ">ดินอินทรีย์ / ดินพรุ (Peat Soil)</option>
+        </select>
+      </div>
+
+      <button class="btn" onclick="analyzeFeature1()">วิเคราะห์ดิน</button>
+      <div id="f1-result" class="result-box hidden"></div>
+    </section>
+
+    <!-- ================= ฟีเจอร์ที่ 2 ================= -->
+    <section id="feature2" class="tab-content">
+      <h2>📊 ฟีเจอร์ที่ 2: ประเมินโอกาสรอดของการปลูกพืช (%)</h2>
+      <p>เลือกดิน พืช และจังหวัด เพื่อให้ AI วิเคราะห์โอกาสรอดและวิธีดูแล</p>
+
+      <div class="form-group">
+        <label for="f2-plant">พิมพ์ชื่อพืชที่ต้องการปลูก (ภาษาไทยหรืออังกฤษ):</label>
+        <input type="text" id="f2-plant" placeholder="เช่น ทุเรียน, Mango, กะเพรา, Rose">
+      </div>
+
+      <div class="form-group">
+        <label for="f2-soil">เลือกชนิดดินที่คุณมี:</label>
+        <select id="f2-soil">
+          <option value="ดินร่วน">ดินร่วน</option>
+          <option value="ดินเหนียว">ดินเหนียว</option>
+          <option value="ดินทราย">ดินทราย</option>
+          <option value="ดินร่วนปนทราย">ดินร่วนปนทราย</option>
+          <option value="ดินอินทรีย์">ดินอินทรีย์</option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label for="f2-province">เลือกจังหวัดที่ต้องการปลูก:</label>
+        <select id="f2-province">
+          <!-- ภาคเหนือ -->
+          <option value="เชียงใหม่">เชียงใหม่</option>
+          <option value="เชียงราย">เชียงราย</option>
+          <option value="ลำปาง">ลำปาง</option>
+          <option value="ลำพูน">ลำพูน</option>
+          <option value="แม่ฮ่องสอน">แม่ฮ่องสอน</option>
+          <option value="น่าน">น่าน</option>
+          <option value="พะเยา">พะเยา</option>
+          <option value="แพร่">แพร่</option>
+          <option value="อุตรดิตถ์">อุตรดิตถ์</option>
+          <!-- ภาคตะวันออกเฉียงเหนือ -->
+          <option value="ขอนแก่น">ขอนแก่น</option>
+          <option value="นครราชสีมา">นครราชสีมา</option>
+          <option value="อุดรธานี">อุดรธานี</option>
+          <option value="อุบลราชธานี">อุบลราชธานี</option>
+          <option value="กาฬสินธุ์">กาฬสินธุ์</option>
+          <option value="ชัยภูมิ">ชัยภูมิ</option>
+          <option value="นครพนม">นครพนม</option>
+          <option value="บึงกาฬ">บึงกาฬ</option>
+          <option value="บุรีรัมย์">บุรีรัมย์</option>
+          <option value="มหาสารคาม">มหาสารคาม</option>
+          <option value="มุกดาหาร">มุกดาหาร</option>
+          <option value="ยโสธร">ยโสธร</option>
+          <option value="ร้อยเอ็ด">ร้อยเอ็ด</option>
+          <option value="เลย">เลย</option>
+          <option value="ศรีสะเกษ">ศรีสะเกษ</option>
+          <option value="สกลนคร">สกลนคร</option>
+          <option value="สุรินทร์">สุรินทร์</option>
+          <option value="หนองคาย">หนองคาย</option>
+          <option value="หนองบัวลำภู">หนองบัวลำภู</option>
+          <option value="อำนาจเจริญ">อำนาจเจริญ</option>
+          <!-- ภาคกลาง -->
+          <option value="กรุงเทพมหานคร">กรุงเทพมหานคร</option>
+          <option value="กำแพงเพชร">กำแพงเพชร</option>
+          <option value="ชัยนาท">ชัยนาท</option>
+          <option value="นครนายก">นครนายก</option>
+          <option value="นครปฐม">นครปฐม</option>
+          <option value="นครสวรรค์">นครสวรรค์</option>
+          <option value="นนทบุรี">นนทบุรี</option>
+          <option value="ปทุมธานี">ปทุมธานี</option>
+          <option value="พระนครศรีอยุธยา">พระนครศรีอยุธยา</option>
+          <option value="พิจิตร">พิจิตร</option>
+          <option value="พิษณุโลก">พิษณุโลก</option>
+          <option value="เพชรบูรณ์">เพชรบูรณ์</option>
+          <option value="ลพบุรี">ลพบุรี</option>
+          <option value="สมุทรปราการ">สมุทรปราการ</option>
+          <option value="สมุทรสงคราม">สมุทรสงคราม</option>
+          <option value="สมุทรสาคร">สมุทรสาคร</option>
+          <option value="สระบุรี">สระบุรี</option>
+          <option value="สิงห์บุรี">สิงห์บุรี</option>
+          <option value="สุโขทัย">สุโขทัย</option>
+          <option value="สุพรรณบุรี">สุพรรณบุรี</option>
+          <option value="อ่างทอง">อ่างทอง</option>
+          <option value="อุทัยธานี">อุทัยธานี</option>
+          <!-- ภาคตะวันออก -->
+          <option value="จันทบุรี">จันทบุรี</option>
+          <option value="ฉะเชิงเทรา">ฉะเชิงเทรา</option>
+          <option value="ชลบุรี">ชลบุรี</option>
+          <option value="ตราด">ตราด</option>
+          <option value="ปราจีนบุรี">ปราจีนบุรี</option>
+          <option value="ระยอง">ระยอง</option>
+          <option value="สระแก้ว">สระแก้ว</option>
+          <!-- ภาคตะวันตก -->
+          <option value="กาญจนบุรี">กาญจนบุรี</option>
+          <option value="ตาก">ตาก</option>
+          <option value="ประจวบคีรีขันธ์">ประจวบคีรีขันธ์</option>
+          <option value="เพชรบุรี">เพชรบุรี</option>
+          <option value="ราชบุรี">ราชบุรี</option>
+          <!-- ภาคใต้ -->
+          <option value="กระบี่">กระบี่</option>
+          <option value="ชุมพร">ชุมพร</option>
+          <option value="ตรัง">ตรัง</option>
+          <option value="นครศรีธรรมราช">นครศรีธรรมราช</option>
+          <option value="นราธิวาส">นราธิวาส</option>
+          <option value="ปัตตานี">ปัตตานี</option>
+          <option value="พังงา">พังงา</option>
+          <option value="พัทลุง">พัทลุง</option>
+          <option value="ภูเก็ต">ภูเก็ต</option>
+          <option value="ยะลา">ยะลา</option>
+          <option value="ระนอง">ระนอง</option>
+          <option value="สงขลา">สงขลา</option>
+          <option value="สตูล">สตูล</option>
+          <option value="สุราษฎร์ธานี">สุราษฎร์ธานี</option>
+        </select>
+      </div>
+
+      <button class="btn" onclick="analyzeFeature2()">วิเคราะห์โอกาสรอด</button>
+      <div id="f2-result" class="result-box hidden"></div>
+    </section>
+
+    <!-- ================= ฟีเจอร์ที่ 3 ================= -->
+    <section id="feature3" class="tab-content">
+      <h2>💡 ฟีเจอร์ที่ 3: แนะนำพืชที่เหมาะกับพื้นที่และดิน</h2>
+      <p>ระบุชนิดดินและจังหวัดของคุณ เว็บจะแนะนำพืชที่เหมาะสมที่สุดให้</p>
+
+      <div class="form-group">
+        <label for="f3-soil">เลือกชนิดดินของคุณ:</label>
+        <select id="f3-soil">
+          <option value="ดินร่วน">ดินร่วน</option>
+          <option value="ดินเหนียว">ดินเหนียว</option>
+          <option value="ดินทราย">ดินทราย</option>
+          <option value="ดินร่วนปนทราย">ดินร่วนปนทราย</option>
+          <option value="ดินอินทรีย์">ดินอินทรีย์</option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label for="f3-province">เลือกจังหวัดของคุณ:</label>
+        <select id="f3-province">
+          <!-- ภาคเหนือ -->
+          <option value="เชียงใหม่">เชียงใหม่</option>
+          <option value="เชียงราย">เชียงราย</option>
+          <option value="ลำปาง">ลำปาง</option>
+          <option value="ลำพูน">ลำพูน</option>
+          <option value="แม่ฮ่องสอน">แม่ฮ่องสอน</option>
+          <option value="น่าน">น่าน</option>
+          <option value="พะเยา">พะเยา</option>
+          <option value="แพร่">แพร่</option>
+          <option value="อุตรดิตถ์">อุตรดิตถ์</option>
+          <!-- ภาคตะวันออกเฉียงเหนือ -->
+          <option value="ขอนแก่น">ขอนแก่น</option>
+          <option value="นครราชสีมา">นครราชสีมา</option>
+          <option value="อุดรธานี">อุดรธานี</option>
+          <option value="อุบลราชธานี">อุบลราชธานี</option>
+          <option value="กาฬสินธุ์">กาฬสินธุ์</option>
+          <option value="ชัยภูมิ">ชัยภูมิ</option>
+          <option value="นครพนม">นครพนม</option>
+          <option value="บึงกาฬ">บึงกาฬ</option>
+          <option value="บุรีรัมย์">บุรีรัมย์</option>
+          <option value="มหาสารคาม">มหาสารคาม</option>
+          <option value="มุกดาหาร">มุกดาหาร</option>
+          <option value="ยโสธร">ยโสธร</option>
+          <option value="ร้อยเอ็ด">ร้อยเอ็ด</option>
+          <option value="เลย">เลย</option>
+          <option value="ศรีสะเกษ">ศรีสะเกษ</option>
+          <option value="สกลนคร">สกลนคร</option>
+          <option value="สุรินทร์">สุรินทร์</option>
+          <option value="หนองคาย">หนองคาย</option>
+          <option value="หนองบัวลำภู">หนองบัวลำภู</option>
+          <option value="อำนาจเจริญ">อำนาจเจริญ</option>
+          <!-- ภาคกลาง -->
+          <option value="กรุงเทพมหานคร">กรุงเทพมหานคร</option>
+          <option value="กำแพงเพชร">กำแพงเพชร</option>
+          <option value="ชัยนาท">ชัยนาท</option>
+          <option value="นครนายก">นครนายก</option>
+          <option value="นครปฐม">นครปฐม</option>
+          <option value="นครสวรรค์">นครสวรรค์</option>
+          <option value="นนทบุรี">นนทบุรี</option>
+          <option value="ปทุมธานี">ปทุมธานี</option>
+          <option value="พระนครศรีอยุธยา">พระนครศรีอยุธยา</option>
+          <option value="พิจิตร">พิจิตร</option>
+          <option value="พิษณุโลก">พิษณุโลก</option>
+          <option value="เพชรบูรณ์">เพชรบูรณ์</option>
+          <option value="ลพบุรี">ลพบุรี</option>
+          <option value="สมุทรปราการ">สมุทรปราการ</option>
+          <option value="สมุทรสงคราม">สมุทรสงคราม</option>
+          <option value="สมุทรสาคร">สมุทรสาคร</option>
+          <option value="สระบุรี">สระบุรี</option>
+          <option value="สิงห์บุรี">สิงห์บุรี</option>
+          <option value="สุโขทัย">สุโขทัย</option>
+          <option value="สุพรรณบุรี">สุพรรณบุรี</option>
+          <option value="อ่างทอง">อ่างทอง</option>
+          <option value="อุทัยธานี">อุทัยธานี</option>
+          <!-- ภาคตะวันออก -->
+          <option value="จันทบุรี">จันทบุรี</option>
+          <option value="ฉะเชิงเทรา">ฉะเชิงเทรา</option>
+          <option value="ชลบุรี">ชลบุรี</option>
+          <option value="ตราด">ตราด</option>
+          <option value="ปราจีนบุรี">ปราจีนบุรี</option>
+          <option value="ระยอง">ระยอง</option>
+          <option value="สระแก้ว">สระแก้ว</option>
+          <!-- ภาคตะวันตก -->
+          <option value="กาญจนบุรี">กาญจนบุรี</option>
+          <option value="ตาก">ตาก</option>
+          <option value="ประจวบคีรีขันธ์">ประจวบคีรีขันธ์</option>
+          <option value="เพชรบุรี">เพชรบุรี</option>
+          <option value="ราชบุรี">ราชบุรี</option>
+          <!-- ภาคใต้ -->
+          <option value="กระบี่">กระบี่</option>
+          <option value="ชุมพร">ชุมพร</option>
+          <option value="ตรัง">ตรัง</option>
+          <option value="นครศรีธรรมราช">นครศรีธรรมราช</option>
+          <option value="นราธิวาส">นราธิวาส</option>
+          <option value="ปัตตานี">ปัตตานี</option>
+          <option value="พังงา">พังงา</option>
+          <option value="พัทลุง">พัทลุง</option>
+          <option value="ภูเก็ต">ภูเก็ต</option>
+          <option value="ยะลา">ยะลา</option>
+          <option value="ระนอง">ระนอง</option>
+          <option value="สงขลา">สงขลา</option>
+          <option value="สตูล">สตูล</option>
+          <option value="สุราษฎร์ธานี">สุราษฎร์ธานี</option>
+        </select>
+      </div>
+
+      <button class="btn" onclick="analyzeFeature3()">ค้นหาพืชที่แนะนำ</button>
+      <div id="f3-result" class="result-box hidden"></div>
+    </section>
+
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>
