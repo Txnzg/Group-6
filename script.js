@@ -1,6 +1,6 @@
 // ================= ตั้งค่า API Key =================
 // นำ API Key ที่ได้จาก Google AI Studio มาแปะแทนที่ช่องสี่เหลี่ยมด้านล่างนี้
-const GEMINI_API_KEY = "AQ.Ab8RN6IYFtjxnTUfrlpkRSSeMZ9zzcTARbAsN2UrqfdCpclZkQ"; 
+const GEMINI_API_KEY = "AQ.Ab8RN6IwNn_MyeLCMBjVnCrpvRurmG9dKXO1xVns81CJDfDpkA"; 
 
 // ฟังก์ชันสลับหน้าแท็บ (Tab Switcher)
 function switchTab(tabId) {
